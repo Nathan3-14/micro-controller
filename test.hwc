@@ -1,0 +1,32 @@
+button button_1 = pin12
+button button_2 = pin13
+led red = pin17
+int stage_count = 0
+
+if button_1.ispressed() {
+    stage_count += 1
+
+    if stage_count == 1 or stage_count == 5 {
+        red.on()
+        yellow.off()
+        green.off()
+        stage_count = 0
+    }
+    if stage_count == 2 {
+        red.on()
+        yellow.on()
+        green.off()
+    }
+    if stage_count == 3 {
+        red.off()
+        yellow.off()
+        green.on()
+    }
+    if stage_count == 4 {
+        red.off()
+        yellow.on()
+        green.off()
+    }
+}
+
+wait(button_2.ispressed())
